@@ -1,5 +1,4 @@
 /.stack-work/
-/practice/*
 /bin/*
 *.o
 *.hi

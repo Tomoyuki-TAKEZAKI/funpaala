@@ -1,0 +1,1 @@
+myFavoriteNumber = 42
