@@ -17,5 +17,5 @@ notZero 0 = Nothing
 notZero x = Just x
 
 div3 x
-    | x `mod` 3 == 0 = x `div` 3
-    | otherwise = x
+        | x `mod` 3 == 0 = x `div` 3
+        | otherwise = x
