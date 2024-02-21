@@ -27,3 +27,13 @@ myFldl op s (x : xs) = myFldl op (s `op` x) xs
 myFldl' :: (a -> b -> a) -> a -> [b] -> a
 myFldl' _ s [] = s
 myFldl' op s (x : xs) = s `seq` myFldl' op (s `op` x) xs
+
+-- この関数を次のようにみることができる
+-- 1. op は、 a 型の値を b -> b 型の関数に変換する関数とみなせる
+-- 2. op [a] 型の値を [b -> b] 型に移す
+-- 3 . (関数合成演算子) によって、[b -> b] 型の関数を合成によって繋げる
+-- 4. つまり (a -> (b -> b)) -> [a] -> (b -> b)
+ffldr :: (a -> b -> b) -> [a] -> b -> b
+-- ffldr = flip . fldr
+ffldr op (x : xs) = op x . ffldr op xs
+ffldr _ [] = id
